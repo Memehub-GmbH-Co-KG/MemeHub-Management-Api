@@ -1,0 +1,22 @@
+{
+  "name": "memehub-man-server",
+  "version": "1.0.0",
+  "description": "A api to get information relevant to manage a memehub bot",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.4",
+    "node-telegram-login": "^1.0.0",
+    "uuid": "^7.0.2"
+  },
+  "devDependencies": {}
+}
