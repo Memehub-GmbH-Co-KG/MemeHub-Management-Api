@@ -9,14 +9,13 @@ client.connect(function (err) {
     if (err)
         throw err;
 
-    console.log('Connected successfully to mongo db.');
-
     mongo = client.db(process.env.MONGO_DB);
+    console.log(`Connected successfully to mongo db (${process.env.MONGO_DB})`);
 });
 
 export function getMongoDb() {
     if (mongo === undefined)
-        throw new Error('Not connected to mongo db')
+        throw new Error(`Not connected to mongo db`)
     return mongo;
 }
 
