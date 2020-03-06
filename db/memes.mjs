@@ -10,7 +10,7 @@ export async function getMemes(amount, olderThan, newerThan) {
         if (newerThan) date.$gt = newerThan;
         const where = {};
         if (date.$lt || date.$gt)
-            where.post_data = date;
+            where.post_date = date;
         const res = await getMongoDb().collection(process.env.MONGO_MEMES_COLLECTION).find(where, {
             limit: amount,
             sort: [['post_date', -1]]
