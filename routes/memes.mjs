@@ -1,6 +1,7 @@
 import { validateSession } from '../lib/session.mjs';
 import express from 'express';
 import { getMemes } from '../db/memes.mjs';
+import { markMemeAsRepost } from '../bot/repost.mjs';
 
 const router = express.Router()
 
@@ -12,6 +13,16 @@ router.get('/memes', validateSession, async (req, res) => {
         amount = 20;
     const memes = await getMemes(amount, olderThan, newerThan);
     res.json(memes);
+});
+
+router.post('/memes/:id/repost', validateSession, async (req, res) => {
+    try {
+        await markMemeAsRepost(req.params.id, req.body.isRepost);
+    }
+    catch (error) {
+        return res.status(500);
+    }
+    res.status(200);
 });
 
 export default router;
