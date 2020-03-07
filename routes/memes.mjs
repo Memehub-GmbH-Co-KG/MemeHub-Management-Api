@@ -3,6 +3,7 @@ import express from 'express';
 import moment from 'moment';
 import { getMemes } from '../db/memes.mjs';
 import { markMemeAsRepost } from '../bot/repost.mjs';
+import { addImage } from '../bot/images.mjs';
 
 const router = express.Router()
 
@@ -13,6 +14,8 @@ router.get('/memes', validateSession, async (req, res) => {
     if (amount < 0 || amount > 50) amount = 10;
 
     const memes = await getMemes(amount, olderThan, newerThan);
+    for (const meme of memes)
+        await addImage(meme);
     res.json(memes);
 });
 

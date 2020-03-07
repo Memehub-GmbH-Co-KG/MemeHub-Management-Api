@@ -8,9 +8,10 @@ import memes from './routes/memes.mjs';
 import logs from './routes/logs.mjs';
 
 // Setup
-const app = express()
+const app = express();
 app.use(cors());
 app.use(bodyParser());
+
 
 // Routes
 app.use(login);
